@@ -20,7 +20,7 @@ export default function Createtodo({ user, handleTodo }) {
       title,
       description,
       author: user,
-      dateCreated: Date.now()
+    
     };
 
     handleTodo(newTodo);
