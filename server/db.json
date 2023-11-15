@@ -1,0 +1,71 @@
+{
+  "todos": [
+    {
+      "id": "d7c565e0-19b6-4fdc-8b74-58aef548e5ba",
+      "title": "test1",
+      "description": "test1",
+      "author": "depaulstu@gmail.com",
+      "dateCreated": "14/11/2023, 21:33:58"
+    },
+    {
+      "id": "92bbf37e-bb2e-4bf7-b32f-0b2b5aa547b9",
+      "title": "test2",
+      "description": "test2",
+      "author": "depaulstu@gmail.com",
+      "dateCreated": "14/11/2023, 21:34:02"
+    },
+    {
+      "id": "f44dd256-b958-4b64-b94f-2831547ef05e",
+      "title": "test3",
+      "description": "test3",
+      "author": "depaulstu@gmail.com",
+      "dateCreated": "14/11/2023, 21:34:06"
+    },
+    {
+      "id": "1cb8da7a-b92a-4f11-b08e-80c853253127",
+      "title": "test4",
+      "description": "test4",
+      "author": "depaulstu@gmail.com",
+      "dateCreated": "14/11/2023, 21:34:12"
+    }
+  ],
+  "users": [
+    {
+      "email": "mmohan2@depaul.edu",
+      "password": "$2a$10$aEwprCbWhjsE7Z/QbyyR8ecbbPPYOrVj7Z4izm77VsUmk3Gr0.Y.K",
+      "id": 1
+    },
+    {
+      "email": "dummy@gmail.com",
+      "password": "$2a$10$/4bKbyuPHfvWUMpRU2CJOeVEMJW2OVz9XXgM6Pr4gefZ8/nZbau1S",
+      "id": 2
+    },
+    {
+      "email": "dummy23@gmail.com",
+      "password": "$2a$10$kSiH2uDiasHEGGnyclhooOOuioe.NMNth0FRAwn2oLG7AxhlolFKG",
+      "id": 3
+    },
+    {
+      "email": "depaulstu@gmail.com",
+      "password": "$2a$10$H8sU1d4GDy7WQt8qxIpAu.3xBNBUdMmXf3ocl1xyFqkdXgkM0lIjC",
+      "id": 4
+    },
+    {
+      "email": "depaulstu2@gmail.com",
+      "password": "$2a$10$0aDnAngYGhjJMo1TbRw.0uFgjjlB14tg5/YXNeRsAex7OBqC3Q9V.",
+      "id": 5
+    }
+  ],
+  "themes": [
+    {
+      "id": 1,
+      "primaryColor": "deepskyblue",
+      "secondaryColor": "coral"
+    },
+    {
+      "primaryColor": "red",
+      "secondaryColor": "green",
+      "id": 2
+    }
+  ]
+}
