@@ -10,7 +10,6 @@ export default function Register({ dispatchUser }) {
 
         useEffect(() => {
             if (user && user.error) {
-              // Handle registration error (e.g., display an error message to the user)
               console.error("Registration error:", user.error);
             } else if (user && user.data) {
               dispatchUser({ type: "REGISTER", username: user.data.user.email });

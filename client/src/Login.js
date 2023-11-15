@@ -26,12 +26,12 @@ export default function Login({ dispatchUser }) {
 
   const handleUsernameChange = (evt) => {
     setUsername(evt.target.value);
-    setLoginFailed(false); // Reset loginFailed when the username changes
+    setLoginFailed(false); 
   };
 
   const handlePasswordChange = (evt) => {
     setPassword(evt.target.value);
-    setLoginFailed(false); // Reset loginFailed when the password changes
+    setLoginFailed(false); 
   };
 
   const handleSubmit = (e) => {

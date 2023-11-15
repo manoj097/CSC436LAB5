@@ -27,7 +27,7 @@ export default function TodoList() {
     }
   
     toggleTodo({
-      id: todoToToggle.id, // Use the correct ID from the server data
+      id: todoToToggle.id,
       completed: !todoToToggle.completed,
       dateCompleted: !todoToToggle.completed ? new Date().toLocaleString() : null,
     });
@@ -41,7 +41,7 @@ export default function TodoList() {
       return;
     }
   
-    deleteTodo(todoToDelete.id); // Use the correct ID from the server data
+    deleteTodo(todoToDelete.id); 
   
     dispatch({ type: "DELETE_TODO", todo: todoToDelete });
   };
