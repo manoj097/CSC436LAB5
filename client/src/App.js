@@ -15,30 +15,53 @@ function App() {
   //     .then(todos => dispatch({ type: 'FETCH_TODOS', todos })); // Dispatch todos, not todo
   // }, []);
 
-  const [ todoResponse , getTodos ] = useResource(() => ({
-    url: '/todos',
-    method: 'get'
-    }));
-
-    useEffect(getTodos, []);
-    useEffect(()=>
-  {
-    if(todoResponse && todoResponse.data ){
-      dispatch({ type: 'FETCH_TODOS', todos: todoResponse.data.reverse() });
-    }
-  },[todoResponse]);
- 
   const [state, dispatch] = useReducer(appReducer, {
     user: "",
-    todo: []
+    todo: [],
   });
 
-  const { user,todos } = state;
-  const [theme, setTheme] = useState({ primaryColor: "orange", secondaryColor: "purple" });
+  //   useEffect(getTodos, []);
+  //   useEffect(()=>
+  // {
+  //   if(todoResponse && todoResponse.data ){
+  //     dispatch({ type: 'FETCH_TODOS', todos: todoResponse.data.reverse() });
+  //   }
+  // },[todoResponse]);
+
+  const { user, todos } = state;
+  const [theme, setTheme] = useState({
+    primaryColor: "orange",
+    secondaryColor: "purple",
+  });
+
+  const [todoResponse, getTodos] = useResource(() => ({
+    url: "/todo",
+    method: "get",
+    headers: {
+      Authorization: `Bearer ${state?.user?.access_token}`,
+    },
+  }));
+
+  useEffect(() => {
+    getTodos();
+  }, [state?.user?.access_token]);
+
+  useEffect(() => {
+    if (todoResponse && todoResponse.isLoading === false) {
+      if (todoResponse.error) {
+        console.error("Error fetching todos:", todoResponse.error);
+
+        // Handle the error, e.g., update UI or show an error message
+      } else if (todoResponse.data) {
+        // Todo fetching was successful
+        dispatch({ type: "FETCH_TODOS", todos: todoResponse.data.reverse() });
+      }
+    }
+  }, [todoResponse, dispatch]);
 
   useEffect(() => {
     if (user) {
-      document.title = `${user}'s Blog`;
+      document.title = `${user.username}'s Blog`;
     } else {
       document.title = "Blog";
     }

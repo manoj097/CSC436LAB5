@@ -1,37 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import { useResource } from 'react-request-hook';
+import React, { useState, useEffect } from "react";
+import { useResource } from "react-request-hook";
 
 export default function Login({ dispatchUser }) {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [loginFailed, setLoginFailed] = useState(false);
 
-  const [user, login] = useResource((username, password) => ({
-    url: "/login",
+  const [user, login, getTodos] = useResource((username, password) => ({
+    url: "/auth/login",
     method: "post",
-    data: { email: username, password },
+    data: { username, password },
   }));
 
   useEffect(() => {
-    if (user && user.isLoading === false) {
-      if (user.error) {
-        setLoginFailed(true);
-      } else if (user.data && user.data.user) {
-        setLoginFailed(false);
-        dispatchUser({ type: "LOGIN", username: user.data.user.email });
-      }
+    if (user && user.isLoading === false && user.data) {
+      setLoginFailed(false);
+      dispatchUser({
+        type: "LOGIN",
+        username: username,
+        access_token: user.data.access_token,
+      });
+
+      // Fetch todos after successful login
+      getTodos();
     }
-  }, [user, dispatchUser]);
-  
+  }, [user.data, dispatchUser, getTodos, username, user]);
 
   const handleUsernameChange = (evt) => {
     setUsername(evt.target.value);
-    setLoginFailed(false); 
+    setLoginFailed(false);
   };
 
   const handlePasswordChange = (evt) => {
     setPassword(evt.target.value);
-    setLoginFailed(false); 
+    setLoginFailed(false);
   };
 
   const handleSubmit = (e) => {
@@ -42,7 +44,7 @@ export default function Login({ dispatchUser }) {
   return (
     <>
       {loginFailed && (
-        <span style={{ color: 'red' }}>INVALID USERNAME OR PASSWORD </span>
+        <span style={{ color: "red" }}>INVALID USERNAME OR PASSWORD </span>
       )}
       <form onSubmit={handleSubmit}>
         <label htmlFor="login-username">Username:</label>

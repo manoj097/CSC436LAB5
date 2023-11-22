@@ -32,7 +32,7 @@ export default function Createtodo() {
       id: uuidv4(),
       title,
       description,
-      author: user,
+      author: user.username,
       dateCreated: new Date().toLocaleString(),
     
     };
@@ -48,6 +48,9 @@ export default function Createtodo() {
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
+      <div>
+        AUTHOR:<b>{user.username}</b>
+      </div>
       <div>
         <label htmlFor="create-title">TITLE:</label>
         <input
